@@ -4,6 +4,13 @@ const bodyParser= require('body-parser');
 const port=8000;
 const app= express();
 
+const User = require('./models/User')
+mongoose.connect("mongodb://172.17.0.2:27017/userData", 
+    {useNewUrlParser: true, useUnifiedTopology: true})
+        .then(() => console.log("Successfully Connected to MongoDB"))
+        .catch((err) => {throw new Error("Oops an Error", err)})
+
+
 app.use(bodyParser.json());
 
 app.listen(port, ()=>{
